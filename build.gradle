@@ -1,21 +1,22 @@
 plugins {
     id 'org.springframework.boot' version '2.6.1' apply false
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE' apply false
+    id 'pl.allegro.tech.build.axion-release' version '1.13.6'
     id 'java'
     id 'base'
 }
 
 ext.projectIds = [
     group: "com.workury.springpetclinic",
-    version: "1.0.0",
     sourceCompatibility: "17"
-] 
+]
 
 allprojects {
 
     group = projectIds.group
-    version = projectIds.version
     sourceCompatibility = projectIds.sourceCompatibility
+
+    project.version = scmVersion.version
 
     repositories {
         mavenCentral()
