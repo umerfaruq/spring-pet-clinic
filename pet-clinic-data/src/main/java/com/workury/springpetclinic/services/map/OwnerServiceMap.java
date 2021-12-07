@@ -3,7 +3,9 @@ package com.workury.springpetclinic.services.map;
 import com.workury.springpetclinic.model.Owner;
 import com.workury.springpetclinic.services.OwnerService;
 import java.util.Set;
+import org.springframework.stereotype.Service;
 
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     @Override
