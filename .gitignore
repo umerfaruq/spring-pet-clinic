@@ -188,3 +188,11 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
+# static resources
+pet-clinic-web/src/main/resources/static/resources/**

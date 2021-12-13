@@ -1,9 +1,13 @@
 {
+    "name": "SpringPetClinic",
     "devDependencies": {
+        "@parcel/transformer-sass": "^2.0.1",
         "husky": "^7.0.4",
         "lint-staged": "^12.1.2",
+        "parcel": "^2.0.1",
         "prettier": "^2.5.0",
-        "prettier-plugin-java": "^1.6.0"
+        "prettier-plugin-java": "^1.6.0",
+        "sass": "^1.45.0"
     },
     "husky": {
         "hooks": {
@@ -16,6 +20,11 @@
         ]
     },
     "scripts": {
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "clean-css": "rm -r pet-clinic-web/src/main/resources/static/resources/**",
+        "build-css": "parcel build --no-content-hash --no-source-maps pet-clinic-web/src/main/web/scss/*.scss --dist-dir pet-clinic-web/src/main/resources/static/resources/"
+    },
+    "dependencies": {
+        "bootstrap": "^5.1.3"
     }
 }
