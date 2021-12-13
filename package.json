@@ -1,10 +1,13 @@
 {
     "name": "SpringPetClinic",
     "devDependencies": {
+        "@parcel/resolver-glob": "^2.0.1",
         "@parcel/transformer-sass": "^2.0.1",
         "husky": "^7.0.4",
         "lint-staged": "^12.1.2",
         "parcel": "^2.0.1",
+        "parcel-namer-ows": "^0.1.4",
+        "parcel-namer-rewrite": "^2.0.0-rc.1",
         "prettier": "^2.5.0",
         "prettier-plugin-java": "^1.6.0",
         "sass": "^1.45.0"
@@ -21,10 +24,20 @@
     },
     "scripts": {
         "prepare": "husky install",
-        "clean-css": "rm -r pet-clinic-web/src/main/resources/static/resources/**",
-        "build-css": "parcel build --no-content-hash --no-source-maps pet-clinic-web/src/main/web/scss/*.scss --dist-dir pet-clinic-web/src/main/resources/static/resources/"
+        "clean-resources": "rm -r pet-clinic-web/src/main/resources/static/assets/**",
+        "build-resources": "parcel build --no-scope-hoist --no-content-hash --no-source-maps pet-clinic-web/src/main/resources/src/main.js --dist-dir pet-clinic-web/src/main/resources/static/assets/"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.4",
         "bootstrap": "^5.1.3"
+    },
+    "parcel-namer-rewrite": {
+        "chain": "@parcel/namer-default",
+        "rules": {
+            "(.*).css": "styles/$1.css",
+            "(.*).js": "scripts/$1.js",
+            "(.*).png": "images/$1.png",
+            "(.*).(ttf|woff|woff2|eot|svg)": "fonts/$1.$2"
+        }
     }
 }

@@ -195,4 +195,4 @@ dist
 *.scss.map
 
 # static resources
-pet-clinic-web/src/main/resources/static/resources/**
+pet-clinic-web/src/main/resources/static/assets/**
