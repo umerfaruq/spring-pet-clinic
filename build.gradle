@@ -30,3 +30,23 @@ dependencies {
         archives(it)
     }
 }
+
+task npmCleanWebResources(type: NpmTask) {
+    group = "npm"
+    description = "Clean web resources"
+    args = ["run", "clean-resources"]
+}
+
+task npmBuildWebResource(type: NpmTask) {
+    group = "npm"
+    description = "Build web resources"
+    args = ["run", "build-resources"]
+}
+
+task npmCleanBuildResources {
+    group = "npm"
+    description = "Clean and build web resources"
+    dependsOn "npmCleanWebResources"
+    dependsOn "npmBuildWebResource"
+    tasks.findByName("npmBuildWebResource").mustRunAfter "npmCleanWebResources"
+}

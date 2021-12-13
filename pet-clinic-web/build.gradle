@@ -9,3 +9,5 @@ dependencies {
     implementation project(':pet-clinic-data')
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
+
+assemble.dependsOn rootProject.npmCleanBuildResources
