@@ -1,12 +1,20 @@
 package com.workury.springpetclinic.services.map;
 
+import com.workury.springpetclinic.model.Specialty;
 import com.workury.springpetclinic.model.Vet;
+import com.workury.springpetclinic.services.SpecialtyService;
 import com.workury.springpetclinic.services.VetService;
 import java.util.Set;
 import org.springframework.stereotype.Service;
 
 @Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
+
+    private final SpecialtyService specialtyService;
+
+    public VetServiceMap(SpecialtyService specialtyService) {
+        this.specialtyService = specialtyService;
+    }
 
     @Override
     public Set<Vet> findAll() {
@@ -20,7 +28,21 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
 
     @Override
     public Vet save(Vet object) {
-        return super.save(object);
+        if (object != null) {
+            if (!object.getSpecialties().isEmpty()) {
+                object
+                    .getSpecialties()
+                    .forEach(specialty -> {
+                        if (specialty.getId() == null) {
+                            Specialty savedSpecialty = specialtyService.save(specialty);
+                            specialty.setId(savedSpecialty.getId());
+                        }
+                    });
+            }
+            return super.save(object);
+        } else {
+            return null;
+        }
     }
 
     @Override
