@@ -1,11 +1,13 @@
 package com.workury.springpetclinic.bootstrap;
 
 import com.workury.springpetclinic.model.Owner;
+import com.workury.springpetclinic.model.Pet;
 import com.workury.springpetclinic.model.PetType;
 import com.workury.springpetclinic.model.Vet;
 import com.workury.springpetclinic.services.OwnerService;
 import com.workury.springpetclinic.services.PetTypeService;
 import com.workury.springpetclinic.services.VetService;
+import java.time.LocalDate;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -44,12 +46,32 @@ public class DataLoader implements CommandLineRunner {
         Owner owner = new Owner();
         owner.setFirstName("Michael");
         owner.setLastName("Weston");
+        owner.setAddress("123 Brickerel");
+        owner.setCity("Miami");
+        owner.setTelephone("123-456-7890");
+
+        Pet mikesPet = new Pet();
+        mikesPet.setPetType(savedDogPetType);
+        mikesPet.setOwner(owner);
+        mikesPet.setBirthDate(LocalDate.now());
+        mikesPet.setName("Rosco");
+        owner.getPets().add(mikesPet);
 
         ownerService.save(owner);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Fiona");
         owner2.setLastName("Glenanne");
+        owner2.setAddress("123 Brickerel");
+        owner2.setCity("Miami");
+        owner2.setTelephone("123-456-7890");
+
+        Pet fionasCat = new Pet();
+        fionasCat.setPetType(savedCatPetType);
+        fionasCat.setOwner(owner2);
+        fionasCat.setBirthDate(LocalDate.now());
+        fionasCat.setName("Kitty");
+        owner2.getPets().add(fionasCat);
 
         ownerService.save(owner2);
 
