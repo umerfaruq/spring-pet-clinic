@@ -25,7 +25,8 @@
     "scripts": {
         "prepare": "husky install",
         "clean-resources": "rm -r pet-clinic-web/src/main/resources/static/assets/**",
-        "build-resources": "parcel build --no-scope-hoist --no-content-hash --no-source-maps pet-clinic-web/src/main/resources/src/main.js --dist-dir pet-clinic-web/src/main/resources/static/assets/"
+        "build-resources": "parcel build --no-scope-hoist --no-content-hash --no-source-maps pet-clinic-web/src/main/resources/src/main.js --dist-dir pet-clinic-web/src/main/resources/static/assets/",
+        "watch-resources": "parcel watch --no-scope-hoist --no-content-hash --no-source-maps pet-clinic-web/src/main/resources/src/main.js --dist-dir pet-clinic-web/src/main/resources/static/assets/"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.4",

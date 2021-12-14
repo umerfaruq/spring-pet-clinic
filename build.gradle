@@ -37,16 +37,22 @@ task npmCleanWebResources(type: NpmTask) {
     args = ["run", "clean-resources"]
 }
 
-task npmBuildWebResource(type: NpmTask) {
+task npmBuildWebResources(type: NpmTask) {
     group = "npm"
     description = "Build web resources"
     args = ["run", "build-resources"]
+}
+
+task npmWatchResources(type: NpmTask) {
+    group = "npm"
+    description = "Watch web resources"
+    args = ["run", "watch-resources"]
 }
 
 task npmCleanBuildResources {
     group = "npm"
     description = "Clean and build web resources"
     dependsOn "npmCleanWebResources"
-    dependsOn "npmBuildWebResource"
-    tasks.findByName("npmBuildWebResource").mustRunAfter "npmCleanWebResources"
+    dependsOn "npmBuildWebResources"
+    tasks.findByName("npmBuildWebResources").mustRunAfter "npmCleanWebResources"
 }
