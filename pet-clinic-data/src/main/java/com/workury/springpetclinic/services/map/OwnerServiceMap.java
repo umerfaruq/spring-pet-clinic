@@ -6,9 +6,11 @@ import com.workury.springpetclinic.services.OwnerService;
 import com.workury.springpetclinic.services.PetService;
 import com.workury.springpetclinic.services.PetTypeService;
 import java.util.Set;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
+@Profile({ "default", "map" })
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final PetTypeService petTypeService;

@@ -3,9 +3,11 @@ package com.workury.springpetclinic.services.map;
 import com.workury.springpetclinic.model.PetType;
 import com.workury.springpetclinic.services.PetTypeService;
 import java.util.Set;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
+@Profile({ "default", "map" })
 public class PetTypeServiceMap extends AbstractMapService<PetType, Long> implements PetTypeService {
 
     @Override

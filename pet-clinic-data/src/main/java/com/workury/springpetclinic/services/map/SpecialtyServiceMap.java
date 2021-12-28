@@ -3,9 +3,11 @@ package com.workury.springpetclinic.services.map;
 import com.workury.springpetclinic.model.Specialty;
 import com.workury.springpetclinic.services.SpecialtyService;
 import java.util.Set;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
+@Profile({ "default", "map" })
 public class SpecialtyServiceMap
     extends AbstractMapService<Specialty, Long>
     implements SpecialtyService {
