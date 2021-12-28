@@ -5,10 +5,12 @@ import com.workury.springpetclinic.model.Pet;
 import com.workury.springpetclinic.model.PetType;
 import com.workury.springpetclinic.model.Specialty;
 import com.workury.springpetclinic.model.Vet;
+import com.workury.springpetclinic.model.Visit;
 import com.workury.springpetclinic.services.OwnerService;
 import com.workury.springpetclinic.services.PetTypeService;
 import com.workury.springpetclinic.services.SpecialtyService;
 import com.workury.springpetclinic.services.VetService;
+import com.workury.springpetclinic.services.VisitService;
 import java.time.LocalDate;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -20,17 +22,20 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
     public DataLoader(
         OwnerService ownerService,
         VetService vetService,
         PetTypeService petTypeService,
-        SpecialtyService specialtyService
+        SpecialtyService specialtyService,
+        VisitService visitService
     ) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -94,6 +99,13 @@ public class DataLoader implements CommandLineRunner {
         owner2.getPets().add(fionasCat);
 
         ownerService.save(owner2);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(fionasCat);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Sneezy Kitty");
+
+        visitService.save(catVisit);
 
         Vet vet = new Vet();
         vet.setFirstName("Sam");
