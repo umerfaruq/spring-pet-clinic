@@ -2,7 +2,15 @@ package com.workury.springpetclinic.model;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @MappedSuperclass
 public class Person extends BaseEntity {
 
