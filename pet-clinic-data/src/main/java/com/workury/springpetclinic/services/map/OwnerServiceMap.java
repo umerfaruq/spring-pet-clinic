@@ -5,6 +5,7 @@ import com.workury.springpetclinic.model.Pet;
 import com.workury.springpetclinic.services.OwnerService;
 import com.workury.springpetclinic.services.PetService;
 import com.workury.springpetclinic.services.PetTypeService;
+import java.util.List;
 import java.util.Set;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -74,5 +75,11 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
             .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
             .findFirst()
             .orElse(null);
+    }
+
+    @Override
+    public List<Owner> findAllByLastNameLike(String lastName) {
+        // TODO needs to be implemented
+        return null;
     }
 }
