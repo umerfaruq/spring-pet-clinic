@@ -47,6 +47,20 @@ public class Owner extends Person {
         this.address = address;
         this.city = city;
         this.telephone = telephone;
-        this.pets = pets;
+        if (pets != null) {
+            this.pets = pets;
+        } else {
+            this.pets = new HashSet<>();
+        }
+    }
+
+    public Pet getPet(String name) {
+        name = name.toLowerCase();
+        for (Pet pet : getPets()) {
+            if (pet.getName().toLowerCase().equals(name)) {
+                return pet;
+            }
+        }
+        return null;
     }
 }
